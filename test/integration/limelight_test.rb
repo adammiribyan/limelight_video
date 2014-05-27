@@ -20,6 +20,13 @@ describe Limelight do
     end
   end
 
+  it 'should specify the ref_id property for the uploading media' do
+    with_a_cassette("limelight upload media") do
+      video = @limelight.upload(sample_mp4_file, ref_id: '32')
+      video["ref_id"].must_equal '32'
+    end
+  end
+
   it 'should upload an io stream' do
     with_a_cassette("limelight upload io") do
       io = StringIO.new << File.read(sample_mp4_file)
