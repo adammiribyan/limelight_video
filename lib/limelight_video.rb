@@ -101,6 +101,7 @@ class Limelight
     media_file = Faraday::UploadIO.new(file, mime, filename)
     options = {
       title: attributes.fetch(:title, 'Unnamed'),
+      ref_id: attributes.fetch(:ref_id, ''),
       media_file: media_file
     }
     if attributes[:metadata]
